@@ -1,12 +1,10 @@
-[providers]
-nodejs = "18"
+providers = ["node"]
 
 [variables]
 NODE_ENV = "production"
 NPM_CONFIG_PRODUCTION = "false"
 
 [phases.install]
-dependsOn = []
 cmds = [
   "npm install",
   "cd backend && npm install",
