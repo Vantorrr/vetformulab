@@ -1,0 +1,28 @@
+{
+  "name": "vetformulab",
+  "version": "1.0.0",
+  "description": "VetFormuLab Pro - Профессиональная платформа для расчета питания животных",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "build": "cd frontend && npm run build",
+    "install-deps": "cd backend && npm install && cd ../frontend && npm install",
+    "deploy:build": "npm run install-deps && npm run build",
+    "deploy:start": "cd backend && npm start"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vetformulab.git"
+  },
+  "keywords": ["veterinary", "nutrition", "calculator", "MVP"],
+  "author": "VetFormuLab Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
