@@ -10,6 +10,7 @@ COPY backend/package*.json ./backend/
 COPY frontend/package*.json ./frontend/
 
 # Устанавливаем зависимости
+RUN npm install
 RUN npm run install-deps
 
 # Копируем весь код
@@ -25,4 +26,4 @@ RUN npm run build
 EXPOSE 3001
 
 # Запускаем приложение
-CMD ["npm", "run", "deploy:start"] 
+CMD ["npm", "start"] 
