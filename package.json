@@ -6,10 +6,12 @@
   "scripts": {
     "start": "cd backend && npm start",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
-    "build": "cd frontend && npm run build",
-    "install-deps": "cd backend && npm install && cd ../frontend && npm install",
-    "deploy:build": "npm run install-deps && npm run build",
-    "deploy:start": "cd backend && npm start"
+    "build": "npm run install:frontend && cd frontend && npm run build",
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install", 
+    "postinstall": "npm run install:backend && npm run install:frontend",
+    "railway:build": "npm run build",
+    "railway:start": "cd backend && npm start"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -17,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/vetformulab.git"
+    "url": "https://github.com/Vantorrr/vetformulab.git"
   },
   "keywords": ["veterinary", "nutrition", "calculator", "MVP"],
   "author": "VetFormuLab Team",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^8.2.2"
   }
 } 

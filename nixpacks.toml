@@ -1,0 +1,21 @@
+[providers]
+nodejs = "18"
+
+[variables]
+NODE_ENV = "production"
+NPM_CONFIG_PRODUCTION = "false"
+
+[phases.install]
+dependsOn = []
+cmds = [
+  "npm install",
+]
+
+[phases.build]
+dependsOn = ["install"]
+cmds = [
+  "npm run railway:build"
+]
+
+[start]
+cmd = "npm run railway:start" 

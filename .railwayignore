@@ -1,0 +1,39 @@
+# Railway ignore patterns
+node_modules
+.git
+.gitignore
+README.md
+DEPLOY.md
+.env*
+*.log
+
+# Development files
+.vscode
+.idea
+.DS_Store
+
+# Frontend development files (мы собираем build)
+frontend/src
+frontend/public
+frontend/node_modules
+frontend/.git*
+frontend/README.md
+
+# Backend development
+backend/node_modules/.cache
+backend/data/*.db-*
+
+# Test files
+**/*.test.js
+**/*.spec.js
+**/test/
+**/tests/
+
+# Documentation
+docs/
+*.md
+
+# Cache directories
+.cache
+.tmp
+.temp 
