@@ -1,0 +1,8 @@
+{
+  "build": {
+    "buildCommand": "npm run install-backend && npm run install-frontend && npm run build-frontend"
+  },
+  "deploy": {
+    "startCommand": "npm start"
+  }
+} 
