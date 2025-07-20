@@ -6,8 +6,8 @@
   "scripts": {
     "start": "cd backend && node src/server.js",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
-    "build": "cd frontend && npm install && npm run build && cd .. && cp -r frontend/build backend/public && cd backend && npm install",
-    "vercel-build": "cd frontend && npm install && npm run build"
+    "build": "cd frontend && npm run build && cd .. && cp -r frontend/build backend/public && cd backend",
+    "postinstall": "cd frontend && npm install && cd ../backend && npm install"
   },
   "engines": {
     "node": ">=18.0.0",
