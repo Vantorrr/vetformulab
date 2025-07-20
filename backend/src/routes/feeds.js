@@ -598,40 +598,6 @@ router.post('/calculate-daily-amount', (req, res) => {
   }
 });
 
-// Получить базовую информацию о кормах (для совместимости)
-router.get('/', (req, res) => {
-  ensureDbInitialized();
-  try {
-    const db = getDatabase();
-    
-    db.all(`
-      SELECT id, name, brand, type, animal_type, life_stage, 
-             crude_protein, crude_fat, crude_fiber, 
-             metabolizable_energy
-      FROM feeds_extended 
-      ORDER BY brand, name
-    `, (err, rows) => {
-      if (err) {
-        console.error('Error fetching feeds:', err);
-        return res.status(500).json({
-          success: false,
-          error: 'Failed to fetch feeds'
-        });
-      }
 
-      res.json({
-        success: true,
-        feeds: rows
-      });
-    });
-
-  } catch (error) {
-    console.error('Error fetching feeds:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Failed to fetch feeds'
-    });
-  }
-});
 
 module.exports = router; 
