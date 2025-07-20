@@ -33,21 +33,19 @@ app.use('/api/animals', animalsRouter);
 app.use('/api/feeds', feedsRouter);
 app.use('/api/calculations', calculationsRouter);
 
-// Serve static files from React app in production
-if (process.env.NODE_ENV === 'production') {
-  // Обслуживаем статичные файлы из frontend/build
-  app.use(express.static(path.join(__dirname, '../../frontend/build')));
-  
-  // Catch-all handler: отправляем index.html для всех неопознанных роутов
-  app.get('*', (req, res) => {
-    // Пропускаем API роуты
-    if (req.path.startsWith('/api/')) {
-      res.status(404).json({ error: 'API endpoint not found' });
-    } else {
-      res.sendFile(path.join(__dirname, '../../frontend/build/index.html'));
-    }
-  });
-}
+// Serve static files from React app
+// Обслуживаем статичные файлы из frontend/build
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
+
+// Catch-all handler: отправляем index.html для всех неопознанных роутов
+app.get('*', (req, res) => {
+  // Пропускаем API роуты
+  if (req.path.startsWith('/api/')) {
+    res.status(404).json({ error: 'API endpoint not found' });
+  } else {
+    res.sendFile(path.join(__dirname, '../../frontend/build/index.html'));
+  }
+});
 
 // Health check
 app.get('/api/health', (req, res) => {
