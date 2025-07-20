@@ -38,6 +38,9 @@ app.use('/api/animals', animalsRouter);
 app.use('/api/feeds', feedsRouter);
 app.use('/api/calculations', calculationsRouter);
 
+// Обслуживание статических файлов React приложения
+app.use(express.static(path.join(__dirname, '../public')));
+
 // Health check and 404 for non-API routes
 app.get('/', (req, res) => {
   res.json({ 
@@ -53,10 +56,12 @@ app.get('/', (req, res) => {
   });
 });
 
-// 404 for non-API routes
+// SPA fallback - отправляем index.html для всех не-API маршрутов
 app.get('*', (req, res) => {
-  if (!req.path.startsWith('/api/')) {
-    res.status(404).json({ error: 'This is API server. Frontend is on Vercel.' });
+  if (req.path.startsWith('/api/')) {
+    res.status(404).json({ error: 'API endpoint not found' });
+  } else {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
   }
 });
 
