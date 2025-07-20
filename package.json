@@ -4,14 +4,13 @@
   "description": "VetFormuLab Pro - Профессиональная платформа для расчета питания животных",
   "main": "backend/src/server.js",
   "scripts": {
-    "start": "cd backend && npm start",
+    "start": "cd backend && node src/server.js",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
     "build": "npm run install:frontend && cd frontend && npm run build",
     "install:backend": "cd backend && npm install",
     "install:frontend": "cd frontend && npm install", 
-    "postinstall": "npm run install:backend && npm run install:frontend",
-    "railway:build": "npm run build",
-    "railway:start": "cd backend && npm start"
+    "install-deps": "npm run install:backend && npm run install:frontend",
+    "postinstall": "npm run install:backend && npm run install:frontend"
   },
   "engines": {
     "node": ">=18.0.0",

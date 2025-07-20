@@ -9,13 +9,14 @@ NPM_CONFIG_PRODUCTION = "false"
 dependsOn = []
 cmds = [
   "npm install",
+  "npm run install-deps"
 ]
 
 [phases.build]
 dependsOn = ["install"]
 cmds = [
-  "npm run railway:build"
+  "npm run build"
 ]
 
 [start]
-cmd = "npm run railway:start" 
+cmd = "npm start" 
