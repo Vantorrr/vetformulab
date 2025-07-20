@@ -12,19 +12,12 @@ const { router: authRouter } = require('./routes/auth');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// CORS configuration for Vercel + Railway hybrid
+// CORS configuration - allow all origins for monorepo deployment
 const corsOptions = {
-  origin: [
-    'http://localhost:3000', 
-    'http://127.0.0.1:3000',
-    'https://vetformulab.vercel.app',
-    /\.vercel\.app$/,
-    /\.railway\.app$/,
-    /\.render\.com$/
-  ],
+  origin: true, // Allow all origins since frontend is served from same domain
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 };
 
 // Middleware
