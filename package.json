@@ -6,10 +6,7 @@
   "scripts": {
     "start": "cd backend && node src/server.js",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
-    "build": "echo 'Build completed'",
-    "install-backend": "cd backend && npm install",
-    "install-frontend": "cd frontend && npm install", 
-    "build-frontend": "cd frontend && CI=false npm run build"
+    "build": "cd backend && npm install && cd ../frontend && npm install && CI=false npm run build"
   },
   "engines": {
     "node": ">=18.0.0",
